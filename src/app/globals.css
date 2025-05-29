@@ -1,26 +1,430 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Animation du header */
+header {
+  transition: all 0.3s ease-in-out;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+header.scrolled {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ✅ Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Styles pour un scroll plus fluide */
+body {
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.1) transparent;
+  scroll-behavior: smooth;
+}
+
+/* Styles pour les conteneurs scrollables */
+.container {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+}
+
+/* Styles pour améliorer les performances */
+* {
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+/* Styles spécifiques pour la page */
+.page-content {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.1) transparent;
+}
+
+/* Styles pour les conteneurs scrollables */
+.container {
+  will-change: transform;
+  scroll-margin-top: 80px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+
+
+/* Animation pour les cartes */
+@keyframes premium-stagger {
+  0% {
+    opacity: 0;
+    transform: 
+      translateX(100px) 
+      translateY(50px) 
+      rotateX(20deg) 
+      rotateY(-10deg) 
+      scale(0.8) 
+      perspective(1000px);
+    filter: 
+      blur(8px) 
+      brightness(0.7) 
+      contrast(0.8) 
+      saturate(1.2);
+  }
+  20% {
+    opacity: 0.3;
+    transform: 
+      translateX(40px) 
+      translateY(30px) 
+      rotateX(10deg) 
+      rotateY(-5deg) 
+      scale(0.9) 
+      perspective(1000px);
+    filter: 
+      blur(4px) 
+      brightness(0.8) 
+      contrast(0.9) 
+      saturate(1.1);
+  }
+  40% {
+    opacity: 0.6;
+    transform: 
+      translateX(10px) 
+      translateY(10px) 
+      rotateX(5deg) 
+      rotateY(-2deg) 
+      scale(0.95) 
+      perspective(1000px);
+    filter: 
+      blur(2px) 
+      brightness(0.9) 
+      contrast(0.95) 
+      saturate(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: 
+      translateX(0) 
+      translateY(0) 
+      rotateX(0deg) 
+      rotateY(0deg) 
+      scale(1) 
+      perspective(1000px);
+    filter: 
+      blur(0) 
+      brightness(1) 
+      contrast(1) 
+      saturate(1);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.animate-premium-stagger {
+  animation: premium-stagger 1.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Animation pour les cartes avec décalage */
+@keyframes premium-stagger-1 {
+  0% {
+    opacity: 0;
+    transform: 
+      translateX(100px) 
+      translateY(50px) 
+      rotateX(20deg) 
+      rotateY(-10deg) 
+      scale(0.8) 
+      perspective(1000px);
+    filter: 
+      blur(8px) 
+      brightness(0.7) 
+      contrast(0.8) 
+      saturate(1.2);
+  }
+  20% {
+    opacity: 0.3;
+    transform: 
+      translateX(40px) 
+      translateY(30px) 
+      rotateX(10deg) 
+      rotateY(-5deg) 
+      scale(0.9) 
+      perspective(1000px);
+    filter: 
+      blur(4px) 
+      brightness(0.8) 
+      contrast(0.9) 
+      saturate(1.1);
+  }
+  40% {
+    opacity: 0.6;
+    transform: 
+      translateX(10px) 
+      translateY(10px) 
+      rotateX(5deg) 
+      rotateY(-2deg) 
+      scale(0.95) 
+      perspective(1000px);
+    filter: 
+      blur(2px) 
+      brightness(0.9) 
+      contrast(0.95) 
+      saturate(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: 
+      translateX(0) 
+      translateY(0) 
+      rotateX(0deg) 
+      rotateY(0deg) 
+      scale(1) 
+      perspective(1000px);
+    filter: 
+      blur(0) 
+      brightness(1) 
+      contrast(1) 
+      saturate(1);
+  }
+}
+
+@keyframes premium-stagger-2 {
+  0% {
+    opacity: 0;
+    transform: 
+      translateX(100px) 
+      translateY(50px) 
+      rotateX(20deg) 
+      rotateY(-10deg) 
+      scale(0.8) 
+      perspective(1000px);
+    filter: 
+      blur(8px) 
+      brightness(0.7) 
+      contrast(0.8) 
+      saturate(1.2);
+  }
+  20% {
+    opacity: 0.3;
+    transform: 
+      translateX(40px) 
+      translateY(30px) 
+      rotateX(10deg) 
+      rotateY(-5deg) 
+      scale(0.9) 
+      perspective(1000px);
+    filter: 
+      blur(4px) 
+      brightness(0.8) 
+      contrast(0.9) 
+      saturate(1.1);
+  }
+  40% {
+    opacity: 0.6;
+    transform: 
+      translateX(10px) 
+      translateY(10px) 
+      rotateX(5deg) 
+      rotateY(-2deg) 
+      scale(0.95) 
+      perspective(1000px);
+    filter: 
+      blur(2px) 
+      brightness(0.9) 
+      contrast(0.95) 
+      saturate(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: 
+      translateX(0) 
+      translateY(0) 
+      rotateX(0deg) 
+      rotateY(0deg) 
+      scale(1) 
+      perspective(1000px);
+    filter: 
+      blur(0) 
+      brightness(1) 
+      contrast(1) 
+      saturate(1);
+  }
+}
+
+@keyframes premium-stagger-3 {
+  0% {
+    opacity: 0;
+    transform: 
+      translateX(100px) 
+      translateY(50px) 
+      rotateX(20deg) 
+      rotateY(-10deg) 
+      scale(0.8) 
+      perspective(1000px);
+    filter: 
+      blur(8px) 
+      brightness(0.7) 
+      contrast(0.8) 
+      saturate(1.2);
+  }
+  20% {
+    opacity: 0.3;
+    transform: 
+      translateX(40px) 
+      translateY(30px) 
+      rotateX(10deg) 
+      rotateY(-5deg) 
+      scale(0.9) 
+      perspective(1000px);
+    filter: 
+      blur(4px) 
+      brightness(0.8) 
+      contrast(0.9) 
+      saturate(1.1);
+  }
+  40% {
+    opacity: 0.6;
+    transform: 
+      translateX(10px) 
+      translateY(10px) 
+      rotateX(5deg) 
+      rotateY(-2deg) 
+      scale(0.95) 
+      perspective(1000px);
+    filter: 
+      blur(2px) 
+      brightness(0.9) 
+      contrast(0.95) 
+      saturate(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: 
+      translateX(0) 
+      translateY(0) 
+      rotateX(0deg) 
+      rotateY(0deg) 
+      scale(1) 
+      perspective(1000px);
+    filter: 
+      blur(0) 
+      brightness(1) 
+      contrast(1) 
+      saturate(1);
+  }
+}
+
+.animate-premium-stagger-1 {
+  animation: premium-stagger-1 1.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
+}
+
+.animate-premium-stagger-2 {
+  animation: premium-stagger-2 1.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s forwards;
+}
+
+.animate-premium-stagger-3 {
+  animation: premium-stagger-3 1.8s cubic-bezier(0.4, 0, 0.2, 1) 0.6s forwards;
+}
+
+/* Ajout d'un décalage progressif pour les cartes */
+@keyframes fade-in-stagger-1 {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) rotateX(10deg) scale(0.9);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes fade-in-stagger-2 {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) rotateX(10deg) scale(0.9);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes fade-in-stagger-3 {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) rotateX(10deg) scale(0.9);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg) scale(1);
+    filter: blur(0);
+  }
+}
+
+.animate-fade-in-stagger-1 {
+  animation: fade-in-stagger-1 1s cubic-bezier(0.25, 0.1, 0.25, 1) 0.1s forwards;
+}
+
+.animate-fade-in-stagger-2 {
+  animation: fade-in-stagger-2 1s cubic-bezier(0.25, 0.1, 0.25, 1) 0.2s forwards;
+}
+
+.animate-fade-in-stagger-3 {
+  animation: fade-in-stagger-3 1s cubic-bezier(0.25, 0.1, 0.25, 1) 0.3s forwards;
+}
+
+/* ✅ Variables de Thème Light/Dark */
+@layer base {
+  :root {
+    --background: #ffffff;
+    --foreground: #1f2937;
+  }
+
+  .dark {
+    --background: #1f2937;
+    --foreground: #ffffff;
+  }
+
+  html {
+    height: 100vh;
+    will-change: transform;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-geist-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--background);
+    color: var(--foreground);
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    will-change: transform;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+  }
 }
