@@ -14,17 +14,8 @@ interface ThemeAndLanguageSwitcherProps {
 export default function ThemeAndLanguageSwitcher({ className = '' }: ThemeAndLanguageSwitcherProps) {
   const [isThemeHovered, setIsThemeHovered] = useState(false);
   const [isLanguageHovered, setIsLanguageHovered] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
   const { language, setLanguage } = useLanguage();
   const { theme, setTheme } = useTheme();
-
-  useEffect(() => {
-    setIsLoading(false);
-  }, []);
-
-  useEffect(() => {
-    setIsLoading(false);
-  }, []);
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -75,6 +66,8 @@ export default function ThemeAndLanguageSwitcher({ className = '' }: ThemeAndLan
       {/* Switch de langue */}
       <motion.button
         onClick={switchLanguage}
+        onMouseEnter={() => setIsLanguageHovered(true)}
+        onMouseLeave={() => setIsLanguageHovered(false)}
         className="relative p-2 rounded-lg transition-all duration-200"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
@@ -84,6 +77,8 @@ export default function ThemeAndLanguageSwitcher({ className = '' }: ThemeAndLan
             : 'transparent',
           backdropFilter: isLanguageHovered ? 'blur(4px)' : 'none'
         }}
+        aria-label="Toggle language"
+        title={language === 'fr' ? 'Passer en anglais' : 'Switch to French'}
       >
         <div className="flex items-center gap-1">
           <span className="text-sm font-medium">
